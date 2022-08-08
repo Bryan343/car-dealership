@@ -4,11 +4,11 @@ import Index from 'pages/Index';
 import Login from 'pages/Login';
 import Register from 'pages/Register';
 import Admin from 'pages/admin/Index';
+import Customers from 'pages/admin/Customers';
+import Vehicles from 'pages/admin/Vehicles';
 import PublicLayout from 'layouts/PublicLayout';
 import AuthLayout from 'layouts/AuthLayout';
 import PrivateLayout from 'layouts/PrivateLayout';
-import Customers from 'pages/admin/Customers';
-import Vehicles from 'pages/admin/Vehicles';
 
 function App() {
   return (

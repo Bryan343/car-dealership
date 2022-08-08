@@ -3,7 +3,7 @@ import { Outlet } from 'react-router-dom';
 
 const PrivateLayout = () => {
   return (
-    <div>
+    <div className='flex flex-row'>
       <Sidebar />
       <Outlet />
     </div>

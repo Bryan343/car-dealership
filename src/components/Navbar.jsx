@@ -2,9 +2,11 @@ import { Link } from 'react-router-dom'
 
 const Navbar = () => {
   return (
-    <header className="bg-black w-screen text-white p-5">
-      <Link to="/user/login">Log in</Link>
-    </header>
+    <nav className="flex justify-end bg-black w-screen text-white font-medium py-5 px-14">
+      <ul>
+        <li><Link to="/user/login">Log in</Link></li>
+      </ul>
+    </nav>
   )
 }
 

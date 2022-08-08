@@ -1,6 +1,6 @@
 const Customers = () => {
   return (
-    <div>Customers</div>
+    <div className="w-full p-8">Customers</div>
   )
 }
 

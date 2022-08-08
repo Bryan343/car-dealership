@@ -1,6 +1,6 @@
 const Admin = () => {
   return (
-    <div>Admin</div>
+    <div className="w-full p-8">Admin</div>
   )
 }
 

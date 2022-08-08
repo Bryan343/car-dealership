@@ -1,3 +1,7 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+.admin-li {
+    @apply flex justify-center hover:bg-zinc-900 cursor-pointer p-10 text-white;
+}
