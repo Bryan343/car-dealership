@@ -1,4 +1,6 @@
-import { useEffect, useState } from 'react'
+import { useEffect, useState, useRef } from 'react'
+import { ToastContainer, toast } from 'react-toastify'
+import 'react-toastify/dist/ReactToastify.css'
 
 const backEndData = []
 
@@ -28,8 +30,16 @@ const Vehicles = () => {
         }}>
         { buttonText }
       </button>
-      <div>
-        { vehicleListActive ? <VehicleList list={ vehicleData }/> : <AddVehicleForm />}
+      <div className='flex flex-col'>
+        { vehicleListActive ? (
+          <VehicleList list={ vehicleData }/>
+        ) : (
+          <AddVehicleForm setVehicleListActive={ setVehicleListActive } vehicleData={ vehicleData } setVehicleData={ setVehicleData }/>
+        )}
+        <ToastContainer
+          position="top-center"
+          autoClose={2000}
+        />
       </div>
     </div>
   )
@@ -37,7 +47,7 @@ const Vehicles = () => {
 
 const VehicleList = ({ list }) => {
   return (
-    <div className="flex flex-col justify-beetween items-center p-20">
+    <div className="flex flex-col justify-beetween items-center p-20 pb-5">
       <table className="w-full">
         <thead className="bg-black text-white">
           <tr>
@@ -64,15 +74,60 @@ const VehicleList = ({ list }) => {
   )
 }
 
-const AddVehicleForm = () => {
+const AddVehicleForm = ({ setVehicleListActive, vehicleData, setVehicleData }) => {
+  const form = useRef();
+
+  const sendToBackend = (e) => {
+    e.preventDefault();
+    const formEl = form.current;
+    const formD = new FormData(formEl);
+    const newVehicle = {};
+    formD.forEach((value, key) => {
+      newVehicle[key] = value;
+    });
+    setVehicleData([...vehicleData, newVehicle]);
+    toast.success("Vehicle added!");
+    setVehicleListActive(true);
+  }
+
   return (
-    <div className="flex flex-col justify-beetween items-center p-20">
-      <form action="" className="flex flex-col justify-center align-center w-4/12">
+    <div className="flex flex-col justify-beetween items-center p-20 pb-5">
+      <form ref={form} action="" className="flex flex-col justify-center align-center w-4/12" onSubmit={sendToBackend}>
         <h2 className="text-center text-3xl mb-10 font-bold">Add a new vehicle</h2>
-        <input type="text" placeholder="Name" className="py-3 px-3 border-b-2 mb-2"/>
-        <input type="text" placeholder="Brand" className="py-3 px-3 border-b-2 mb-2"/>
-        <input type="text" placeholder="Model" className="py-3 px-3 border-b-2 mb-10"/>
-        <button className="bg-black text-white rounded px-8 py-3">Add</button>
+        <input
+          type="text"
+          name="name"
+          placeholder="Name"
+          className="py-3 px-3 border-b-2 mb-2"
+          required
+        />
+        <select
+          name="brand"
+          className="py-3 px-3 border-b-2 mb-2"
+          defaultValue={0}
+          required
+        >
+          <option disabled value={0}>Select a brand</option>
+          <option>Toyota</option>
+          <option>Ford</option>
+          <option>Mazda</option>
+          <option>Chevrolet</option>
+        </select>
+        <input
+          type="number"
+          name="model"
+          min={1992}
+          max={new Date().getFullYear()}
+          placeholder="Model"
+          className="py-3 px-3 border-b-2 mb-10"
+          required
+        />
+        <button
+          type="submit"
+          className="bg-black text-white rounded px-8 py-3"
+        >
+          Add
+        </button>
       </form>
     </div>
   )

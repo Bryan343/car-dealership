@@ -1,9 +1,11 @@
+import Logo from 'components/Logo';
 import { Link } from 'react-router-dom';
 
 const Register = () => {
   return (
     <div className="bg-gray-50 h-full w-full flex flex-col items-center justify-center gap-10">
-      <h2 className="text-4xl font-bold">Sign up</h2>
+      <Logo classParams="h-24" white={false}/>
+      <h2 className="text-2xl font-bold text-gray-900">Sign up</h2>
       <form action="" className="w-5/12 flex flex-col gap-6 items-center">
         <div className="w-full flex flex-col">
           <div className="flex gap-5">

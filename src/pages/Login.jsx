@@ -2,13 +2,15 @@ import { Link } from 'react-router-dom'
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { library } from "@fortawesome/fontawesome-svg-core";
 import { faGoogle } from "@fortawesome/free-brands-svg-icons";
+import Logo from 'components/Logo';
 
 library.add(faGoogle);
 
 const Login = () => {
   return (
     <div className="bg-gray-50 h-full w-full flex flex-col items-center justify-center gap-10">
-      <h2 className="text-4xl font-bold">Log in</h2>
+      <Logo classParams="h-24" white={false}/>
+      <h2 className="text-2xl font-bold text-gray-900">Log in</h2>
       <form action="" className="flex flex-col gap-6 items-center w-3/12">
         <div className="w-full flex flex-col">
           <input type="email" placeholder="Email" className="py-3 px-3 border-b-2 mb-4"/>
