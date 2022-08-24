@@ -6,6 +6,8 @@ import Register from 'pages/Register';
 import Admin from 'pages/admin/Index';
 import Customers from 'pages/admin/Customers';
 import Vehicles from 'pages/admin/Vehicles';
+import Sales from 'pages/admin/Sales';
+import Profile from 'pages/admin/Profile';
 import PublicLayout from 'layouts/PublicLayout';
 import AuthLayout from 'layouts/AuthLayout';
 import PrivateLayout from 'layouts/PrivateLayout';
@@ -23,7 +25,9 @@ function App() {
         </Route>
         <Route path="/admin" element={<PrivateLayout />}>
           <Route index element={<Admin />} />
+          <Route path="profile" element={<Profile />} />
           <Route path="vehicles" element={<Vehicles />} />
+          <Route path="sales" element={<Sales />} />
           <Route path="customers" element={<Customers />} />
         </Route>
         <Route

@@ -14,7 +14,7 @@ const Logo = ({ classParams, white, minimal }) => {
             logoMinimalBlack :
             logoBlack
     }
-    class={`${classParams} cursor-pointer`}
+    className={`${classParams} cursor-pointer`}
     alt="Logo" />
   )
 }

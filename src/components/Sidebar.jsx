@@ -3,6 +3,7 @@ import { Link } from "react-router-dom";
 import { library } from "@fortawesome/fontawesome-svg-core";
 import { faDoorOpen } from '@fortawesome/free-solid-svg-icons';
 import Logo from "./Logo";
+import useActiveRoute from "hooks/useActiveRoute";
 
 library.add(faDoorOpen);
 
@@ -12,13 +13,28 @@ const Sidebar = () => {
       <div className="flex flex-col my-5 gap-5">
         <Logo white={true} minimal={true} classParams="m-auto w-40"/>
         <ul>
-          <Link to="/admin"><li className="admin-li">Home</li></Link>
-          <Link to="vehicles"><li className="admin-li">Vehicles</li></Link>
-          <Link to="customers"><li className="admin-li">Customers</li></Link>
+          <AdminLink path="profile" text="Profile" />
+          <AdminLink path="vehicles" text="Vehicles" />
+          <AdminLink path="sales" text="Sales" />
+          <AdminLink path="customers" text="Customers" />
         </ul>
       </div>
       <div className="admin-li"><Link to="/" ><FontAwesomeIcon icon="fa-solid fa-door-open" /> Sign out</Link></div>
     </div>
+  )
+}
+
+const AdminLink = ({ path, text }) => {
+  const isActive = useActiveRoute(path);
+  return (
+    <Link to={ path }>
+      <li 
+        className={
+          isActive ? "admin-li-active" : "admin-li"
+        }>
+          { text }
+        </li>
+    </Link>
   )
 }
 

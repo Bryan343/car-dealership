@@ -3,5 +3,9 @@
 @tailwind utilities;
 
 .admin-li {
-    @apply flex justify-center hover:bg-zinc-900 cursor-pointer p-10 text-white;
+    @apply flex justify-center hover:bg-zinc-900 cursor-pointer p-10 text-white font-medium;
+}
+
+.admin-li-active {
+    @apply flex justify-center cursor-pointer p-10 text-black bg-white font-medium;
 }
